@@ -1,0 +1,330 @@
+<!doctype html>
+<html lang="en">
+
+<head>
+    <!-- Required meta tags -->
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+    <!-- Bootstrap CSS -->
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css"
+        integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+
+    <title>Page2</title>
+    <style>
+        body {
+            background-color: #8a1b46;
+        }
+
+        .hex {
+            width: 200px;
+            display: inline-block;
+            position: relative;
+            margin: 0 5px;
+            color: #ffffff;
+            filter: url('#goo');
+            /* padding: 30px; */
+            /* text-align: center; */
+        }
+
+        .hex>p {
+            color: black;
+            padding: 0;
+            left: 40%;
+            top: 47%;
+            margin: 0 auto;
+            position: absolute;
+            z-index: 10000;
+        }
+
+        .hex::before {
+            content: "";
+            display: block;
+            background: currentColor;
+            padding-top: 115%;
+            /* 100%/cos(30)  */
+            clip-path: polygon(0% 25%, 0% 75%, 50% 100%, 100% 75%, 100% 25%, 50% 0%);
+        }
+
+        /* .img-container{
+      text-align: left;
+      display: block;
+    } */
+        textarea:focus,
+        textarea.form-control:focus,
+        input.form-control:focus,
+        input[type=text]:focus,
+        input[type=password]:focus,
+        input[type=email]:focus,
+        input[type=number]:focus,
+        [type=text].form-control:focus,
+        [type=password].form-control:focus,
+        [type=email].form-control:focus,
+        [type=tel].form-control:focus,
+        [contenteditable].form-control:focus {
+            box-shadow: inset 0 -1px 0 #ddd;
+        }
+
+        input,
+        input:focus,
+        input:active {
+            border: 0 !important;
+            outline: 0 !important;
+            border-bottom: 2px solid #7d80815e !important;
+            font-size: 1.1rem !important;
+            color: #ccc !important;
+            color: black !important;
+
+        }
+
+        .input-group-text {
+            border: 0 !important;
+            outline: 0 !important;
+            background-color: transparent !important;
+            border-bottom: 2px solid#7d80815e !important;
+            font-size: 1.4rem !important;
+            color: #ccc !important;
+        }
+
+        @media (min-width: 1440px) and (max-width: 2560px) {
+
+
+            .col-lg-4 {
+                border-top-left-radius: 20px;
+                border-top-right-radius: 0px;
+                border-bottom-left-radius: 20px;
+                border-bottom-right-radius: 0px;
+            }
+
+            .col-lg-6 {
+                border-bottom-left-radius: 0px;
+                border-bottom-right-radius: 20px;
+                border-top-left-radius: 0px;
+                border-top-right-radius: 20px;
+
+            }
+
+            .row,
+            h6,
+            p {
+                padding-left: 5px;
+            }
+
+
+        }
+
+        @media (min-width: 1024px) and (max-width: 1440px) {
+
+
+            .col-lg-4 {
+                border-top-left-radius: 20px;
+                border-top-right-radius: 0px;
+                border-bottom-left-radius: 20px;
+                border-bottom-right-radius: 0px;
+            }
+
+            .col-lg-6 {
+                border-bottom-left-radius: 0px;
+                border-bottom-right-radius: 20px;
+                border-top-left-radius: 0px;
+                border-top-right-radius: 20px;
+
+            }
+
+            .row,
+            h6,
+            p {
+                padding-left: 8px;
+            }
+
+        }
+
+        @media (min-width: 768px) and (max-width: 1024px) {
+
+
+            .col-lg-4 {
+                border-top-left-radius: 20px;
+                border-top-right-radius: 0px;
+                border-bottom-left-radius: 20px;
+                border-bottom-right-radius: 0px;
+            }
+
+            .col-lg-6 {
+                border-bottom-left-radius: 0px;
+                border-bottom-right-radius: 20px;
+                border-top-left-radius: 0px;
+                border-top-right-radius: 20px;
+            }
+
+            .row,
+            h6,
+            p {
+                padding-left: 10px;
+            }
+        }
+
+
+        @media (min-width:425px) and (max-width: 768px) {
+
+
+            .col-lg-4 {
+                border-top-left-radius: 20px;
+                border-top-right-radius: 20px;
+                border-bottom-left-radius: 0px;
+                border-bottom-right-radius: 0px;
+            }
+
+            .col-lg-6 {
+                border-bottom-left-radius: 20px;
+                border-bottom-right-radius: 20px;
+                border-top-left-radius: 0px;
+                border-top-right-radius: 0px;
+
+            }
+
+            .row,
+            h6,
+            p {
+                padding-left: 15px;
+            }
+
+            .row {
+                width: 615px;
+            }
+        }
+
+        @media (min-width:375px) and (max-width: 425px) {
+
+
+            .col-lg-4 {
+                border-top-left-radius: 20px;
+                border-top-right-radius: 20px;
+                border-bottom-left-radius: 0px;
+                border-bottom-right-radius: 0px;
+            }
+
+            .col-lg-6 {
+                border-bottom-left-radius: 20px;
+                border-bottom-right-radius: 20px;
+                border-top-left-radius: 0px;
+                border-top-right-radius: 0px;
+
+            }
+
+            /* .col-lg-6, b{
+                width: 70px;
+            } */
+            .row,
+            h6,
+            p {
+                font-size: 10px;
+                /* padding: 10px; */
+                padding-right: 20px;
+            }
+        }
+
+        @media (min-width:320px) and (max-width: 375px) {
+
+
+            .col-lg-4 {
+                border-top-left-radius: 20px;
+                border-top-right-radius: 20px;
+                border-bottom-left-radius: 0px;
+                border-bottom-right-radius: 0px;
+            }
+
+            .col-lg-6 {
+                border-bottom-left-radius: 20px;
+                border-bottom-right-radius: 20px;
+                border-top-left-radius: 0px;
+                border-top-right-radius: 0px;
+
+            }
+
+            .hex {
+                width: 140px;
+            }
+
+            .row,
+            h6,
+            p {
+                font-size: 10px;
+                padding: 10px;
+            }
+
+            .row {
+                width: 615px;
+            }
+        }
+    </style>
+
+</head>
+
+<body>
+
+    <div class="container my-4">
+        <div class="row col-lg-12 my-4">
+            <div class="row offset-lg-1 col-lg-12 my-4"
+                style="padding-top: 70px; padding-left: 70px; padding-right: 5px; padding-bottom: 150px;">
+                <div class=" col-lg-4 "
+                    style="background-color: #e2955c;  height: 110%; text-align: center; padding-top: 200px; ">
+                    <div class="hex ">
+                        <p> <img src="1222.jpg" alt="" style="height: 40px; margin: -37px; padding-bottom: 8px;"></p>
+                    </div>
+                    <svg style="visibility: hidden; position: absolute;" width="0" height="0"
+                        xmlns="http://www.w3.org/2000/svg" version="1.1">
+                        <defs>
+                            <filter id="goo">
+                                <feGaussianBlur in="SourceGraphic" stdDeviation="8" result="blur" />
+                                <feColorMatrix in="blur" mode="matrix"
+                                    values="1 0 0 0 0  0 1 0 0 0  0 0 1 0 0  0 0 0 19 -9" result="goo" />
+                                <feComposite in="SourceGraphic" in2="goo" operator="atop" />
+                            </filter>
+                        </defs>
+                    </svg>
+                </div>
+                <div class="col-lg-6 " style="background-color: #ffffff; text-align: center;">
+                    <p class="my-4" style="padding: 0px; font-size: 20px;">Welcome to <strong>Live Sale Pro
+                        </strong><br>Account login</p>
+
+                    <br><br><br>
+                    <form class="form-horizontal" action="/action_page.php">
+                        <div class="input-group mb-3">
+                            <span class="input-group-text" id="inputGroup-sizing-email">Email</span>
+                            <input type="text" class="form-control" aria-label="Sizing example input"
+                                aria-describedby="inputGroup-sizing-email" placeholder="michael@webside.com">
+                        </div>
+                        <div class="input-group mb-3">
+                            <span class="input-group-text" id="inputGroup-sizing-passwordt">Password</span>
+                            <input type="password" class="form-control" aria-label="Sizing example input"
+                                aria-describedby="inputGroup-sizing-password" placeholder="">
+                        </div>
+                        <div class="row">
+                            <h6 style="text-align: left; padding: 20px; padding-top: 20px;"> I don't have an
+                                account,<strong style="color: #0084fe;">Register now</strong></h6>
+                            <p style="color: #0084fe; text-align: right; padding-top: 20px; padding-left: 60px;">
+                                <strong>Reset Password</strong>
+                            </p><br><br><br><br><br>
+                        </div>
+                        <button
+                            style=" background-color: #d73776; color: white;  height: 30px; border-radius: 30px;border-style: none; width: 365px; ">Login to Lives Sale pro account</button><br><br><br><br>
+                    </form>
+
+                </div>
+            </div>
+        </div>
+    </div>
+
+
+    <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js"
+        integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN"
+        crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js"
+        integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q"
+        crossorigin="anonymous"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js"
+        integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl"
+        crossorigin="anonymous"></script>
+</body>
+
+</html>

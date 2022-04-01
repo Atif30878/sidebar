@@ -1,0 +1,841 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>page4</title>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/boxicons@latest/css/boxicons.min.css">
+    <link href='https://unpkg.com/boxicons@2.1.1/css/boxicons.min.css' rel='stylesheet'>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.6.1/dist/css/bootstrap.min.css">
+    <script src="https://cdn.jsdelivr.net/npm/jquery@3.5.1/dist/jquery.slim.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.1/dist/umd/popper.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.6.1/dist/js/bootstrap.bundle.min.js"></script>
+    <style>
+        @import url("https://fonts.googleapis.com/css2?family=Nunito:wght@400;600;700&display=swap");
+
+        * {
+            padding: 0;
+            margin: 0;
+            box-sizing: border-box;
+            font-family: 'popings'sans-serif;
+        }
+
+        body {
+            min-height: 100vh;
+            width: 100%;
+        }
+
+        .sidebar {
+            position: fixed;
+            height: 100%;
+            width: 240px;
+            background: linear-gradient(to right, #515151 0%, #515151 22%, #464646 22%, #464646 100%);
+            color: white;
+        }
+
+        .sidebar .logo-details {
+            height: 30px;
+            width: 100%;
+        }
+
+        .sidebar .nav-links li {
+            height: 50px;
+            width: 100%;
+            list-style: none;
+        }
+
+        .sidebar .nav-links li a {
+            height: 100%;
+            width: 100%;
+            display: flex;
+            align-items: center;
+            text-decoration: none;
+            transition: all 0.4s ease;
+        }
+
+        .sidebar .nav-links li a:hover {
+            background: linear-gradient(to right, #d73776 0%, #d73776 22%, #ad2d5f 22%, #ad2d5f 100%);
+        }
+
+        .sidebar .nav-links li a i {
+            min-width: 53px;
+            text-align: center;
+            font-size: 18px;
+        }
+
+        .sidebar .nav-links li a .link_name {
+            color: white;
+            font-size: 15px;
+            font-weight: 400;
+            padding-left: 20px;
+        }
+
+        .home-section {
+            background-color: #f9f9f9;
+            position: relative;
+            min-height: 100px;
+            width: cale(100% - 240px);
+            left: 240px;
+            transition: all 0.5s ease;
+        }
+
+        .sidebar.active~.home-section {
+            width: calc(100% - 6opx);
+            left: 6px;
+        }
+
+        :root {
+            --header-height: 3rem;
+            --nav-width: 68px;
+            --first-color: #4723D9;
+            --first-color-light: #ffffff;
+            --white-color: #F7F6FB;
+            --body-font: 'Nunito', sans-serif;
+            --normal-font-size: 1rem;
+            --z-fixed: 100
+        }
+
+        *,
+        ::before,
+        ::after {
+            box-sizing: border-box
+        }
+
+        body {
+            position: relative;
+            margin: var(--header-height) 0 0 0;
+            padding: 0 1rem;
+            font-family: var(--body-font);
+            font-size: var(--normal-font-size);
+            transition: .5s
+        }
+
+        a {
+            text-decoration: none
+        }
+
+        .header {
+            width: 100%;
+            position: fixed;
+            top: 0;
+            left: 0;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            padding: 0 1rem;
+            background-color: var(--white-color);
+            z-index: var(--z-fixed);
+            transition: .5s;
+        }
+
+        .header_toggle {
+            color: var(--first-color);
+            font-size: 1.5rem;
+            cursor: pointer
+        }
+
+        .header_img {
+            width: 35px;
+            height: 35px;
+            display: flex;
+            justify-content: center;
+            border-radius: 50%;
+            overflow: hidden
+        }
+
+        .header_img img {
+            width: 40px
+        }
+
+        .l-navbar {
+            position: fixed;
+            top: 0;
+            left: -30%;
+            width: var(--nav-width);
+            height: 100vh;
+            /* background: linear-gradient(to right, #515151 0%, #515151 25%, #464646 25%, #464646 100%); */
+            transition: all 0.4s ease;
+            z-index: var(--z-fixed)
+        }
+
+        .show {
+            left: 0
+        }
+
+        .body-pd {
+            padding-left: calc(var(--nav-width) + 1rem)
+        }
+
+        .active {
+            color: var(--white-color)
+        }
+
+        .active::before {
+            content: '';
+            position: absolute;
+            left: 0;
+            width: 2px;
+            size: 32px;
+            background-color: var(--white-color)
+        }
+
+        .height-100 {
+            height: 100vh
+        }
+
+        .hex-small {
+            width: 60px;
+            display: inline-block;
+            position: relative;
+            margin: 0 10px;
+            filter: url('#foo');
+        }
+
+        .hex-small>p {
+            color: black;
+            padding: 0;
+            left: 23%;
+            top: 26%;
+            margin: 0 auto;
+            position: absolute;
+            z-index: 10000;
+            font-size: 20px;
+        }
+
+        .hex-small::before {
+            content: "";
+            display: block;
+            background: currentColor;
+            padding-top: 115%;
+            clip-path: polygon(0% 25%, 0% 75%, 50% 100%, 100% 75%, 100% 25%, 50% 0%);
+        }
+
+        @media screen and (min-width: 768px) {
+            body {
+                margin: calc(var(--header-height) + 1rem) 0 0 0;
+                padding-left: calc(var(--nav-width) + 2rem)
+            }
+
+            .header {
+                height: calc(var(--header-height) + 1rem);
+                padding: 0 2rem 0 calc(var(--nav-width) + 2rem)
+            }
+
+            .header_img {
+                width: 40px;
+                height: 40px
+            }
+
+            .header_img img {
+                width: 45px
+            }
+
+            .l-navbar {
+                left: 0;
+                padding: 1rem 1rem 0 0
+            }
+
+            .show {
+                width: calc(var(--nav-width) + 156px)
+            }
+
+            .body-pd {
+                padding-left: calc(var(--nav-width) + 188px)
+            }
+        }
+
+        /* media query */
+
+        @media (min-width: 1024px) and (max-width: 1440px) {
+            body {
+                width: 105%;
+            }
+        }
+
+        @media (min-width: 768px) and (max-width: 1024px) {
+            body {
+                width: 148%;
+            }
+        }
+
+        @media (min-width: 425px) and (max-width: 768px) {
+            body {
+                width: 197%;
+            }
+        }
+
+        @media (min-width: 375px) and (max-width: 425px) {
+            body {
+                width: 356%;
+            }
+        }
+
+        @media (min-width: 320px) and (max-width: 375px) {
+            body {
+                width: 403%;
+            }
+        }
+
+        @media screen and (max-width: 320px) {
+            body {
+                width: 471%;
+            }
+        }
+    </style>
+</head>
+
+<body id="body-pd" style="background: #f9f9f9;" class="body-pd">
+    <header class="header body-pd" id="header"
+        style="background-color: #f9f9f9; width: 100%; display: flex; justify-content: space-between; height: 50px;padding-top: 15px;">
+        <div class="header_toggle " style=" color: black;"> <i class='bx bx-left-indent collaps-sidebar-btn'
+                id="header-toggle"></i>
+            Dashboard
+        </div>
+        <div class="header_toggle">
+            <h8 style="font-size: 20px;color: black; text-align: center;">Welcome <strong>username</strong><img
+                    src="user.png" style="height: 40px;padding-left: 20px;" alt=""></h8>
+        </div>
+    </header>
+    <div class="l-navbar show" id="nav-bar" style="padding: 0px;margin: 0;">
+        <nav class="nav">
+            <div class="sidebar">
+                <div class="logo-details collaps-sidebar-btn"
+                    style="padding: 10px; background-color: #ffffff; color: #464646;">
+                    <i class='bx bx-menu'></i>
+                </div>
+                <div style="background-color: #ffffff; height: 90px; padding-left: 40px; padding-bottom: 20px;">
+                    <img src="1222.jpg" id="sidebar-header-logo" alt="" style="height: 40px; ">
+                </div>
+                <ul class="nav-links">
+                    <!-- <li style="height: 120px;width: 68px;"> -->
+
+                    <!-- </li> -->
+                    <li>
+                        <a href="#" style="color: white; background: linear-gradient(to right, #d73776 0%, #d73776 22%, #ad2d5f 22%, #ad2d5f 100%);">
+                            <i class='bx bxs-dashboard'></i>
+                            <span class="link_name">Dashboard</span>
+                        </a>
+                    </li>
+                    <li>
+                        <a href="#" style="color: white;">
+                            <i class='bx bx-play-circle'></i>
+                            <span class="link_name">Live Sale</span>
+                        </a>
+                    </li>
+                    <li>
+                        <a href="#" style="color: white;">
+                            <i class='bx bxs-file-plus'></i>
+                            <span class="link_name">Posts</span>
+                        </a>
+                    </li>
+                    <li>
+                        <a href="#" style="color: white;">
+                            <i class='bx bx-cog'></i>
+                            <span class="link_name">Setting</span>
+                        </a>
+                    </li>
+                    <li>
+                        <a href="#" style="color: white;">
+                            <i class='bx bxs-cart-download'></i>
+                            <span class="link_name">Orders</span>
+                        </a>
+                    </li>
+                    <li>
+                        <a href="#" style="color: white;">
+                            <i class='bx bx-user-circle'></i>
+                            <span class="link_name">Customers</span>
+                        </a>
+                    </li>
+                    <li>
+                        <a href="#" style="color: white;">
+                            <i class='bx bxs-bank'></i>
+                            <span class="link_name">Products</span>
+                        </a>
+                    </li>
+                    <li>
+                        <a href="#" style="color: white;">
+                            <i class='bx bxs-purchase-tag'></i>
+                            <span class="link_name">Tags</span>
+                        </a>
+                    </li>
+                    <li>
+                        <a href="#" style="color: white;">
+                            <i class='bx bxs-offer'></i>
+                            <span class="link_name">Discounts</span>
+                        </a>
+                    </li>
+                    <li>
+                        <a href="#" style="color: white;">
+                            <i class='bx bxs-report'></i>
+                            <span class="link_name">Reports</span>
+                        </a>
+                    </li>
+                    <li>
+                        <a href="#" style="color: white;">
+                            <i class='bx bx-store-alt'></i>
+                            <span class="link_name">Store Front</span>
+                        </a>
+                    </li>
+                </ul>
+            </div>
+        </nav>
+    </div>
+    <!--Container Main start-->
+    <div class="height-100 bg-light">
+        <div class="alert alert-warning alert-dismissible fade show" role="alert"
+            style="height: 40px; width: 100%; background-color: #eaeaea; color: #d73676; border-radius: 20px;display: flex;justify-content: space-between;">
+            <p><i class='bx bxs-error-circle'></i> <span style="text-decoration: underline;">Live streaming</span>and
+                <span style="text-decoration: underline;">Printer</span> require attention
+            </p>
+            <button type="button" class="close" data-dismiss="alert" aria-label="Close"
+                style="border: none;border-radius: 20px; background-color: #eaeaea; color: #d73676;font-size: 30px;padding-bottom: 0px;">
+                <span aria-hidden="true">&times;</span>
+            </button>
+        </div>
+        <div class="home-content"
+            style="padding-top: 10px; width: 100%; display: flex; justify-content: space-between;">
+            <div class="box">
+                <div class="left-side" style="padding: 20px;height: 200px; background-color: #fff;">
+                    <div class="container"
+                        style="background: #f4f4f4; height: 80px; width: 280px; position: relative; border-radius: 15px;">
+                        <div class="box-container" style="display: flex;">
+                            <div class="box" style="width: 85px; height: 90px;padding: 10px;color: #d73676;">
+                                <div class="hex-small">
+                                    <p><i class='bx bx-cloud-download' style="color: white;font-size: 33px;"></i></p>
+                                </div>
+                                <svg style="visibility: hidden; position: absolute;" width="0" height="0"
+                                    xmlns="http://www.w3.org/2000/svg" version="1.1">
+                                    <defs>
+                                        <filter id="foo">
+                                            <feGaussianBlur in="SourceGraphic" stdDeviation="4" result="blur" />
+                                            <feColorMatrix in="blur" mode="matrix"
+                                                values="1 0 0 0 0  0 1 0 0 0  0 0 1 0 0  0 0 0 19 -17" result="goo" />
+                                            <feComposite in="SourceGraphic" in2="goo" operator="atop" />
+                                        </filter>
+                                    </defs>
+                                </svg>
+                            </div>
+                            <div class="box" style="display: flex; justify-content: center; align-items: center; padding-left: 5px;color: #d73676;
+                            font-size: 40px;">
+                                <div class="number">
+                                    185
+                                </div>
+                            </div>
+                        </div>
+                        <div class="box-container" style="display: flex;">
+                            <div class="box" style="width: 185px; height: 90px;padding-top: 35px; ">
+                                <h6 style="width: 120px;">App Download</h6>
+                            </div>
+                            <div class="box">
+                                <div class="dropdown">
+                                    <button type="button" class="btn btn-primary" data-toggle="dropdown"
+                                        style="background: #ffffff;color: black; border: none; box-shadow: none; padding-top: 30px; padding-left: 50px; width: 150px; ">
+                                        7Days<i class='bx bx-menu' style="color: #d73576;font-size: 20px;"></i>
+                                    </button>
+                                    <div class="dropdown-menu" style="border: none;width: 70px;padding: 5px;">
+                                        <input type="radio" id="html" name="fav_language" value="HTML">
+                                        <label for="html">7Days</label>
+                                        <div class="dropdown-divider"></div>
+                                        <input type="radio" id="css" name="fav_language" value="CSS">
+                                        <label for="css">30Days</label>
+                                        <div class="dropdown-divider"></div>
+                                        <input type="radio" id="javascript" name="fav_language" value="JavaScript">
+                                        <label for="javascript">1 Year</label>
+                                        <div class="dropdown-divider"></div>
+                                        <input type="radio" id="javascript" name="fav_language" value="JavaScript">
+                                        <label for="javascript">Year to date</label>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="box" style="padding-left: 5px;">
+                <div class="left-side" style="padding: 20px;height: 200px; background-color: #fff;">
+                    <div class="container"
+                        style="background: #f4f4f4; height: 80px; width:  280px; position: relative; border-radius: 15px;">
+                        <div class="box-container" style="display: flex;">
+                            <div class="box" style="width:85px; height: 90px;padding: 10px;color: #eda145;">
+                                <div class="hex-small">
+                                    <p><i class='bx bx-user' style="color: white;font-size: 33px;"></i></p>
+                                </div>
+                                <svg style="visibility: hidden; position: absolute;" width="0" height="0"
+                                    xmlns="http://www.w3.org/2000/svg" version="1.1">
+                                    <defs>
+                                        <filter id="foo">
+                                            <feGaussianBlur in="SourceGraphic" stdDeviation="3" result="blur" />
+                                            <feColorMatrix in="blur" mode="matrix"
+                                                values="1 0 0 0 0  0 1 0 0 0  0 0 1 0 0  0 0 0 19 -9" result="goo" />
+                                            <feComposite in="SourceGraphic" in2="goo" operator="atop" />
+                                        </filter>
+                                    </defs>
+                                </svg>
+                            </div>
+                            <div class="box" style="display: flex; justify-content: center; align-items: center; padding-left: 5px;color: #eda145;
+                            font-size: 40px;">
+                                <div class="number">
+                                    320
+                                </div>
+                            </div>
+                        </div>
+                        <div class="box-container" style="display: flex;">
+                            <div class="box" style="width: 185px; height: 90px;padding-top: 35px;">
+                                <h6 style="width: 130px;">Active Customers</h6>
+                            </div>
+                            <div class="box"
+                                style="display: flex; justify-content: center; align-items: center; padding-left: 5px;">
+                                <p style="width: 75px;"><strong>7Days</strong><i class='bx bx-menu'
+                                        style="padding-top: 5px;padding-left: 10px;"></i></p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="box" style="padding-left: 5px;">
+                <div class="left-side" style="padding: 20px;height: 200px; background-color: #fff;">
+                    <div class="container"
+                        style="background: #f4f4f4; height: 80px; width:  280px; position: relative; border-radius: 15px;">
+                        <div class="box-container" style="display: flex;">
+                            <div class="box" style="width:85px; height: 90px;padding: 10px;color: #f0d147;">
+                                <div class="hex-small">
+                                    <p><i class='bx bx-cart-alt' style="color: white;font-size: 33px;"></i></p>
+                                </div>
+                                <svg style="visibility: hidden; position: absolute;" width="0" height="0"
+                                    xmlns="http://www.w3.org/2000/svg" version="1.1">
+                                    <defs>
+                                        <filter id="foo">
+                                            <feGaussianBlur in="SourceGraphic" stdDeviation="3" result="blur" />
+                                            <feColorMatrix in="blur" mode="matrix"
+                                                values="1 0 0 0 0  0 1 0 0 0  0 0 1 0 0  0 0 0 19 -9" result="goo" />
+                                            <feComposite in="SourceGraphic" in2="goo" operator="atop" />
+                                        </filter>
+                                    </defs>
+                                </svg>
+                            </div>
+                            <div class="box" style="display: flex; justify-content: center; align-items: center; padding-left: 5px;color: #f0d147;
+                            font-size: 40px;">
+                                <div class="number">
+                                    1,750
+                                </div>
+                            </div>
+                        </div>
+                        <div class="box-container" style="display: flex;">
+                            <div class="box" style="width: 185px; height: 90px;padding-top: 35px;">
+                                <h6 style="width: 120px;">Total Sales</h6>
+                            </div>
+                            <div class="box"
+                                style="display: flex; justify-content: center; align-items: center; padding-left: 5px;">
+                                <p style="width: 75px;"><strong>7Days</strong><i class='bx bx-menu'
+                                        style="padding-top: 5px;padding-left: 10px;"></i></p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="box" style="padding-left: 5px;">
+                <div class="left-side" style="padding: 20px;height: 200px; background-color: #fff;">
+                    <div class="container"
+                        style="background: #f4f4f4; height: 80px; width: 280px; position: relative; border-radius: 15px;">
+                        <div class="box-container" style="display: flex;">
+                            <div class="box" style="width: 85px; height: 90px;padding: 10px;color: #8c1142;">
+                                <div class="hex-small">
+                                    <p><i class='bx bx-dollar' style="color: white;font-size: 33px;"></i></p>
+                                </div>
+                                <svg style="visibility: hidden; position: absolute;" width="0" height="0"
+                                    xmlns="http://www.w3.org/2000/svg" version="1.1">
+                                    <defs>
+                                        <filter id="foo">
+                                            <feGaussianBlur in="SourceGraphic" stdDeviation="3" result="blur" />
+                                            <feColorMatrix in="blur" mode="matrix"
+                                                values="1 0 0 0 0  0 1 0 0 0  0 0 1 0 0  0 0 0 19 -9" result="goo" />
+                                            <feComposite in="SourceGraphic" in2="goo" operator="atop" />
+                                        </filter>
+                                    </defs>
+                                </svg>
+                            </div>
+                            <div class="box" style="display: flex; justify-content: center; align-items: center; padding-left: 5px;color: #8c1142;
+                            font-size: 25px;">
+                                <i class='bx bx-dollar'></i>
+                                <div class="number">
+                                    1,880,302
+                                </div>
+                            </div>
+                        </div>
+                        <div class="box-container" style="display: flex;">
+                            <div class="box" style="width: 185px; height: 90px;padding-top: 35px;">
+                                <h6 style="width: 120px;">Gross profit</h6>
+                            </div>
+                            <div class="box"
+                                style="display: flex; justify-content: center; align-items: center; padding-left: 5px;">
+                                <p style="width: 75px;"><strong>7Days</strong><i class='bx bx-menu'
+                                        style="padding-top: 5px;padding-left: 10px;"></i></p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="box-container"
+            style="width: 100%; display: flex; justify-content: space-between; padding-top: 50px;height: 85px;">
+            <div class="box" style=" height: 90px;padding: 10px;text-align: left;">
+                <h5>Upcoming live events </h5>
+            </div>
+            <div class="box"
+                style="display: flex; justify-content: center; align-items: center; padding-left: 5px;text-align: right;">
+                <p style="padding-top: 30px;">Rows per page:10 <i class='bx bxs-down-arrow'
+                        style="font-size: 10px;"></i> <i class='bx bx-chevron-left'></i> 1.3 of 3 <i
+                        class='bx bx-chevron-right'></i> </p>
+            </div>
+        </div>
+        <hr>
+        <div class="box" style="display: flex; width: 100%;justify-content: space-between; ">
+            <div class="left-side" style=" padding: 20px;height: 340px; background-color: #fff;">
+                <div class="container"
+                    style="background: #f4f4f4; height: 60px; width: 300px; position: relative; border-radius: 15px;">
+                    <p style="padding: 20px; padding-left: 30px;">July 31 <small style="font-size: 7px;">2020</small>
+                        07.42 <small style="font-size: 7px;">AM</small> </p>
+                </div>
+                <div class="box-container" style="display: flex;">
+                    <div class="box" style="width: 185px; height: 50px;padding: 10px; ">
+                        <h5>Status</h5>
+                    </div>
+                    <div class="box"
+                        style="display: flex; justify-content: center; align-items: center; padding-left: 5px;">
+                        <p><strong>Upcoming</strong><i class='bx bx-menu'
+                                style="padding-top: 5px;padding-left: 10px;"></i></p>
+                    </div>
+                </div>
+                <div class="box-container" style="display: flex;">
+                    <div class="box" style="width: 260px; height: 50px;padding: 10px; ">
+                        <h5>Server</h5>
+                    </div>
+                    <div class="box"
+                        style="display: flex; justify-content: center; align-items: center; padding-left: 5px;">
+                        <p><i class='bx bx-menu' style="padding-top: 5px;padding-left: 10px;"></i></p>
+                    </div>
+                </div>
+                <div class="box-container" style="display: flex;">
+                    <div class="box" style="width: 185px; height: 50px;padding: 10px; ">
+                        <h5>Stream Name</h5>
+                    </div>
+                    <div class="box"
+                        style="display: flex; justify-content: center; align-items: center; padding-left: 5px;">
+                        <p><strong>livestream</strong><i class='bx bx-menu'
+                                style="padding-top: 5px;padding-left: 10px;"></i></p>
+                    </div>
+                </div>
+                <div class="box-container" style="display: flex;">
+                    <div class="box" style="width: 260px; height: 50px;padding: 10px; ">
+                        <h5>Publish to facebook</h5>
+                    </div>
+                    <div class="box"
+                        style="display: flex; justify-content: center; align-items: center; padding-left: 5px;">
+                        <p><i class='bx bx-play'
+                                style="font-size: 25px; color: #dadada; padding-top: 5px;padding-left: 10px;"></i></p>
+                    </div>
+                </div>
+            </div>
+            <div class="left-side" style=" padding: 20px;height: 340px; background-color: #fff;">
+                <div class="container"
+                    style="background: #f4f4f4; height: 60px; width: 300px; position: relative; border-radius: 15px;">
+                    <p style="padding: 20px; padding-left: 30px;">July 31 <small style="font-size: 7px;">2020</small>
+                        07.41 <small style="font-size: 7px;">AM</small> </p>
+                </div>
+                <div class="box-container" style="display: flex;">
+                    <div class="box" style="width: 185px; height: 50px;padding: 10px; ">
+                        <h5>Status</h5>
+                    </div>
+                    <div class="box"
+                        style="display: flex; justify-content: center; align-items: center; padding-left: 5px;">
+                        <p><strong>Upcoming</strong><i class='bx bx-menu'
+                                style="padding-top: 5px;padding-left: 10px;"></i></p>
+                    </div>
+                </div>
+                <div class="box-container" style="display: flex;">
+                    <div class="box" style="width: 247px; height: 50px;padding: 10px; ">
+                        <h5>Server</h5>
+                    </div>
+                    <div class="box"
+                        style="display: flex; justify-content: center; align-items: center; padding-left: 5px;">
+                        <p><i class='bx bxs-checkbox'></i><i class='bx bx-loader-circle'
+                                style="padding-top: 5px;padding-left: 10px;"></i></p>
+                    </div>
+                </div>
+                <div class="box-container" style="display: flex;">
+                    <div class="box" style="width: 185px; height: 50px;padding: 10px; ">
+                        <h5>Stream Name</h5>
+                    </div>
+                    <div class="box"
+                        style="display: flex; justify-content: center; align-items: center; padding-left: 5px;">
+                        <p><strong>livestream</strong><i class='bx bx-menu'
+                                style="padding-top: 5px;padding-left: 10px;"></i></p>
+                    </div>
+                </div>
+                <div class="box-container" style="display: flex;">
+                    <div class="box" style="width: 260px; height: 50px;padding: 10px; ">
+                        <h5>Publish to facebook</h5>
+                    </div>
+                    <div class="box"
+                        style="display: flex; justify-content: center; align-items: center; padding-left: 5px;">
+                        <p><i class='bx bx-play'
+                                style="font-size: 25px; color: #dadada; padding-top: 5px;padding-left: 10px;"></i></p>
+                    </div>
+                </div>
+            </div>
+            <div class="left-side" style=" padding: 20px;height: 340px; background-color: #fff;">
+                <div class="container"
+                    style="background: #f4f4f4; height: 60px; width: 300px; position: relative; border-radius: 15px;">
+                    <p style="padding: 20px; padding-left: 30px;">July 31 <small style="font-size: 7px;">2020</small>
+                        07.40 <small style="font-size: 7px;">AM</small> </p>
+                </div>
+                <div class="box-container" style="display: flex;">
+                    <div class="box" style="width: 185px; height: 50px;padding: 10px; ">
+                        <h5>Status</h5>
+                    </div>
+                    <div class="box"
+                        style="display: flex; justify-content: center; align-items: center; padding-left: 5px;">
+                        <p><strong>Upcoming</strong><i class='bx bx-menu'
+                                style="padding-top: 5px;padding-left: 10px;"></i></p>
+                    </div>
+                </div>
+                <div class="box-container" style="display: flex;">
+                    <div class="box" style="width: 247px; height: 50px;padding: 10px; ">
+                        <h5>Server</h5>
+                    </div>
+                    <div class="box"
+                        style="display: flex; justify-content: center; align-items: center; padding-left: 5px;">
+                        <p><i class='bx bxs-checkbox'></i><i class='bx bx-revision'
+                                style="padding-top: 5px;padding-left: 10px;"></i></p>
+                    </div>
+                </div>
+                <div class="box-container" style="display: flex;">
+                    <div class="box" style="width: 185px; height: 50px;padding: 10px; ">
+                        <h5>Stream Name</h5>
+                    </div>
+                    <div class="box"
+                        style="display: flex; justify-content: center; align-items: center; padding-left: 5px;">
+                        <p><strong>livestream</strong><i class='bx bx-menu'
+                                style="padding-top: 5px;padding-left: 10px;"></i></p>
+                    </div>
+                </div>
+                <div class="box-container" style="display: flex;">
+                    <div class="box" style="width: 260px; height: 50px;padding: 10px; ">
+                        <h5>Publish to facebook</h5>
+                    </div>
+                    <div class="box"
+                        style="display: flex; justify-content: center; align-items: center; padding-left: 5px;">
+                        <p><i class='bx bx-play'
+                                style="font-size: 25px; color: #dadada; padding-top: 5px;padding-left: 10px;"></i></p>
+                    </div>
+                </div>
+            </div>
+            <div class="left-side" style=" padding: 20px;height: 340px; background-color: #fff;">
+                <div class="container"
+                    style="background: #f4f4f4; height: 60px; width: 300px; position: relative; border-radius: 15px;">
+                    <p style="padding: 20px; padding-left: 30px;">July 31 <small style="font-size: 7px;">2020</small>
+                        07.39 <small style="font-size: 7px;">AM</small> </p>
+                </div>
+                <div class="box-container" style="display: flex;">
+                    <div class="box" style="width: 185px; height: 50px;padding: 10px; ">
+                        <h5>Status</h5>
+                    </div>
+                    <div class="box"
+                        style="display: flex; justify-content: center; align-items: center; padding-left: 5px;">
+                        <p><strong>Upcoming</strong><i class='bx bx-menu'
+                                style="padding-top: 5px;padding-left: 10px;"></i></p>
+                    </div>
+                </div>
+                <div class="box-container" style="display: flex;">
+                    <div class="box" style="width: 247px; height: 50px;padding: 10px; ">
+                        <h5>Server</h5>
+                    </div>
+                    <div class="box"
+                        style="display: flex; justify-content: center; align-items: center; padding-left: 5px;">
+                        <p><i class='bx bxs-checkbox'></i><i class='bx bxs-check-circle'
+                                style="padding-top: 5px;padding-left: 10px;"></i></p>
+                    </div>
+                </div>
+                <div class="box-container" style="display: flex;">
+                    <div class="box" style="width: 185px; height: 50px;padding: 10px; ">
+                        <h5>Stream Name</h5>
+                    </div>
+                    <div class="box"
+                        style="display: flex; justify-content: center; align-items: center; padding-left: 5px;">
+                        <p><strong>livestream</strong><i class='bx bx-menu'
+                                style="padding-top: 5px;padding-left: 10px;"></i></p>
+                    </div>
+                </div>
+                <div class="box-container" style="display: flex;">
+                    <div class="box" style="width: 260px; height: 50px;padding: 10px; ">
+                        <h5>Publish to facebook</h5>
+                    </div>
+                    <div class="box"
+                        style="display: flex; justify-content: center; align-items: center; padding-left: 5px;">
+                        <p><i class='bx bx-play'
+                                style="font-size: 25px; color: #a0d333; padding-top: 5px;padding-left: 10px;"></i></p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- Container Main end-->
+
+
+    <!-- javascript -->
+
+    <script>
+        document.addEventListener("DOMContentLoaded", function (event) {
+
+
+
+            // Your code to run since DOM is loaded and ready
+        });
+    </script>
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"
+        integrity="sha256-/xUj+3OJU5yExlq6GSYGSHk7tPXikynS7ogEvDej/m4=" crossorigin="anonymous"></script>
+    <script>
+        $(function () {
+            /*===== LINK ACTIVE =====*/
+            const linkColor = document.querySelectorAll('.nav_link')
+
+            function colorLink() {
+                if (linkColor) {
+                    linkColor.forEach(l => l.classList.remove('active'))
+                    this.classList.add('active')
+                }
+            }
+            linkColor.forEach(l => l.addEventListener('click', colorLink))
+            $(".collaps-sidebar-btn").on('click', function () {
+                console.log('clicked')
+                var side_bar_width = $(".sidebar").width()
+
+                if (side_bar_width == 240) {
+                    console.log('width is 240')
+                    $("#sidebar-header-logo").hide()
+                    $('.sidebar').animate({ width: '48px' });
+                    $('.sidebar').css('background', '#464646')
+                } else {
+                    console.log('width is 48')
+                    $("#sidebar-header-logo").show()
+                    $('.sidebar').animate({ width: '240px' });
+                    $('.sidebar').css('background', 'linear-gradient(to right, #515151 0%, #515151 22%,#464646 22%,#464646 100%)')
+                }
+                $('#nav-bar').toggleClass('show')
+                // change icon
+                $('#header-toggle').toggleClass('bx-x')
+                // add padding to body
+                $('#body-pd').toggleClass('body-pd')
+                // add padding to header
+                $('#header').toggleClass('body-pd')
+
+            })
+        })
+    </script>
+
+
+</body>
+
+</html>
